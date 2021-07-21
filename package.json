@@ -1,0 +1,70 @@
+{
+    "name": "@kobayami/env-utils",
+    "version": "1.0.0",
+    "description": "Utilities for multi-platform code that runs in Web and NodeJS environments.",
+    "main": "lib/index.js",
+    "scripts": {
+        "clean": "rm -rf docs lib test",
+        "format": "prettier --write \"src/**/*.ts\" \"spec/**/*.ts\"",
+        "build": "npm run build-main && npm run build-test",
+        "build-main": "tsc -p tsconfig.src.json",
+        "build-test": "tsc -p tsconfig.test.json && npx webpack",
+        "lint": "tslint -p tsconfig.src.json",
+        "test": "npm run test-nodejs && npm run test-browser",
+        "test-nodejs": "jasmine --config=jasmine.json",
+        "test-browser": "karma start",
+        "doc": "typedoc --tsconfig tsconfig.src.json --excludePrivate",
+        "full-build": "npm run clean && npm run format && npm run build && npm run lint && npm run test && npm run doc",
+        "remove-node_modules": "rm -rf node_modules",
+        "purge": "npm run clean && npm run remove-node_modules",
+        "reinstall": "npm run remove-node_modules && npm install",
+        "reinstall-and-full-build": "npm run reinstall && npm run full-build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kobayami/env-utils.git"
+    },
+    "files": [
+        "lib/**/*",
+        "test/**/*",
+        "jasmine.json",
+        "karma.conf.js"
+    ],
+    "keywords": [
+        "multi platform",
+        "platform independend",
+        "utils",
+        "NodeJS",
+        "Web",
+        "browser",
+        "environment",
+        "module loading",
+        "WebPack"
+    ],
+    "author": "Marco Kaufmann",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/kobayami/env-utils/issues"
+    },
+    "homepage": "https://kobayami.github.io/env-utils",
+    "devDependencies": {
+        "@types/jasmine": "^3.6.9",
+        "@types/node": "^16.3.3",
+        "jasmine": "^3.7.0",
+        "jasmine-console-reporter": "^3.1.0",
+        "karma": "^6.3.4",
+        "karma-chrome-launcher": "^3.1.0",
+        "karma-commonjs": "^1.0.0",
+        "karma-jasmine": "^4.0.1",
+        "prettier": "^2.2.1",
+        "tslint": "^6.1.3",
+        "tslint-config-prettier": "^1.18.0",
+        "typedoc": "^0.20.36",
+        "typescript": "~4.2",
+        "webpack": "^5.45.1",
+        "webpack-cli": "^4.7.2"
+    },
+    "dependencies": {
+        "@kobayami/guards": "^1.1.0"
+    }
+}

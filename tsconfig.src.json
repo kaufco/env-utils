@@ -1,0 +1,16 @@
+{
+    "extends": "./tsconfig",
+    "compilerOptions": {
+        "outDir": "./lib",
+        "declaration": true
+    },
+    "exclude": [
+        "./spec"
+    ],
+    "typedocOptions": {
+        "entryPoints": [
+            "./src/index.ts"
+        ],
+        "out": "docs"
+    }
+}
